@@ -23,6 +23,15 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li><%= link_to 'Home', root_path%></li>
+        <li><%= link_to 'Comics', comics_path%></li>
+      </ul>
+    </nav>
+
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>

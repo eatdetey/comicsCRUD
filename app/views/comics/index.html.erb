@@ -1,0 +1,10 @@
+<h1>Comics</h1>
+
+<% @comics.each do |comic| %>
+    <h2><%= comic.title%></h2>
+
+    <time datetime="<%= comic.formatted_created_at %>">
+        <%= comic.formatted_created_at %>
+    </time>
+<% end %>
+
