@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  get '/comics', to: 'comics#index'
+  resources :comics
+
   root 'pages#index'
 end

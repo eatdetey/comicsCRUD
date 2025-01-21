@@ -1,0 +1,8 @@
+<%= form_with model: @comic do |f| %>
+  <div>
+  <%= f.label :title %>
+  <%= f.text_field :title, required: true, minlength: 2, placeholder: "Title" %>
+  </div>
+
+  <%= f.submit "Submit" %>
+<% end %>

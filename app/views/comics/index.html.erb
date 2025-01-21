@@ -6,5 +6,11 @@
     <time datetime="<%= comic.formatted_created_at %>">
         <%= comic.formatted_created_at %>
     </time>
+
+    <br> 
+    <%= link_to 'Show', comic_path(comic) %>
+    <%= link_to 'Edit', edit_comic_path(comic) %>
+    <%= link_to 'Destroy', comic_path(comic), data: {turbo_confirm: 'Are you sure?', turbo_method: :delete} %>
+
 <% end %>
 
