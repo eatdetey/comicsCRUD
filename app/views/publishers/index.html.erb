@@ -1,0 +1,12 @@
+<h1>Publishers</h1>
+
+<% @publishers.each do |publisher| %>
+    <h2><%= publisher.name%></h2>
+
+    <br> 
+    <%= link_to 'Show', publisher_path(publisher) %>
+    <%= link_to 'Edit', edit_publisher_path(publisher) %>
+    <%= link_to 'Destroy', publisher_path(publisher), data: {turbo_confirm: 'Are you sure?', turbo_method: :delete} %>
+
+<% end %>
+

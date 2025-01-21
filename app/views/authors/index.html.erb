@@ -1,0 +1,12 @@
+<h1>Authors</h1>
+
+<% @authors.each do |author| %>
+    <h2><%= author.name%></h2>
+
+    <br> 
+    <%= link_to 'Show', author_path(author) %>
+    <%= link_to 'Edit', edit_author_path(author) %>
+    <%= link_to 'Destroy', author_path(author), data: {turbo_confirm: 'Are you sure?', turbo_method: :delete} %>
+
+<% end %>
+

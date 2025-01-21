@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_21_185135) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_21_214253) do
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comic_authors", force: :cascade do |t|
+    t.integer "comic_id", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_comic_authors_on_author_id"
+    t.index ["comic_id"], name: "index_comic_authors_on_comic_id"
+  end
+
   create_table "comics", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
+    t.string "genre"
+    t.date "published_on"
+    t.integer "publisher_id", null: false
+    t.index ["publisher_id"], name: "index_comics_on_publisher_id"
   end
+
+  create_table "publishers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "comic_authors", "authors"
+  add_foreign_key "comic_authors", "comics"
+  add_foreign_key "comics", "publishers"
 end

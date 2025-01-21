@@ -1,2 +1,17 @@
 <h1><%= @comic.title %></h1>
-<p> More info </p>
+
+<p><strong>Description:</strong> <%= @comic.description %></p>
+<p><strong>Genre:</strong> <%= @comic.genre %></p>
+<p><strong>Published on:</strong> <%= @comic.published_on.strftime('%B %d, %Y') %></p>
+
+<% if @comic.publisher.present? %>
+  <p><strong>Publisher:</strong> <%= @comic.publisher.name %></p>
+<% end %>
+
+<% if @comic.authors.any? %>
+  <p><strong>Authors:</strong>
+    <%= @comic.authors.map(&:name).join(", ") %>
+  </p>
+<% end %>
+
+<%= link_to 'Back to Comics', comics_path %>

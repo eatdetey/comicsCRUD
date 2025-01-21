@@ -1,0 +1,5 @@
+<h1><%= @publisher.name %></h1>
+
+<p><%= link_to 'Back to Publishers', publishers_path %></p>
+<p><%= link_to 'Edit', edit_publisher_path(@publisher) %></p>
+<p><%= link_to 'Destroy', publisher_path, data: {turbo_confirm: 'Are you sure?', turbo_method: :delete} %></p>

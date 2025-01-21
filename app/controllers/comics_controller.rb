@@ -42,7 +42,7 @@ class ComicsController < ApplicationController
   private
 
   def comic_params
-    params.require(:comic).permit(:title)
+    params.require(:comic).permit(:title, :description, :genre, :published_on, :publisher_id, author_ids: [])
   end
 
 end

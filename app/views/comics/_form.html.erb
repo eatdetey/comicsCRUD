@@ -1,8 +1,26 @@
 <%= form_with model: @comic do |f| %>
-  <div>
   <%= f.label :title %>
-  <%= f.text_field :title, required: true, minlength: 2, placeholder: "Title" %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :genre %>
+  <%= f.text_field :genre %>
+
+  <%= f.label :published_on %>
+  <%= f.date_select :published_on %>
+
+  <%= f.label :publisher_id, "Publisher" %>
+  <%= f.collection_select :publisher_id, Publisher.all, :id, :name %>
+
+  <%= f.label :author_ids, "Authors" %>
+  <div>
+    <% Author.all.each do |author| %>
+      <%= f.check_box :author_ids, { multiple: true }, author.id, nil %>
+      <%= f.label :author_ids, author.name %><br>
+    <% end %>
   </div>
 
-  <%= f.submit "Submit" %>
+  <%= f.submit "Save" %>
 <% end %>
