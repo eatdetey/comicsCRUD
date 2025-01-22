@@ -1,16 +1,22 @@
-<h1>Comics</h1>
+<h1>Comics Collection</h1>
 
-<% @comics.each do |comic| %>
-    <h2><%= comic.title%></h2>
+<%= link_to 'New Comic', new_comic_path, class: 'btn btn-new' %>
 
-    <time datetime="<%= comic.formatted_created_at %>">
-        <%= comic.formatted_created_at %>
-    </time>
+<div class="comics-grid">
+  <% @comics.each do |comic| %>
+    <div class="comic-card">
+      <h2><%= comic.title %></h2>
+      
+      <p><%= comic.genre %></p>
+      <p><%= comic.description %></p>
+    
+      <%= link_to 'Show', comic_path(comic), class: 'btn btn-show' %>
+      <%= link_to 'Edit', edit_comic_path(comic), class: 'btn btn-edit' %>
+      <%= link_to 'Destroy', comic_path(comic), 
+            data: { turbo_confirm: 'Are you sure?', turbo_method: :delete }, 
+            class: 'btn btn-destroy' %>
+    </div>
+  <% end %>
+</div>
 
-    <br> 
-    <%= link_to 'Show', comic_path(comic) %>
-    <%= link_to 'Edit', edit_comic_path(comic) %>
-    <%= link_to 'Destroy', comic_path(comic), data: {turbo_confirm: 'Are you sure?', turbo_method: :delete} %>
-
-<% end %>
 

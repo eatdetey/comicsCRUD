@@ -1,12 +1,19 @@
 <h1>Authors</h1>
 
-<% @authors.each do |author| %>
-    <h2><%= author.name%></h2>
+<%= link_to 'New Author', new_author_path, class: 'btn btn-new' %>
 
-    <br> 
-    <%= link_to 'Show', author_path(author) %>
-    <%= link_to 'Edit', edit_author_path(author) %>
-    <%= link_to 'Destroy', author_path(author), data: {turbo_confirm: 'Are you sure?', turbo_method: :delete} %>
+<div class="comics-grid">
+    <% @authors.each do |author| %>
+        <div class="comic-card">    
+            <h2><%= author.name%></h2>
 
-<% end %>
+            <br> 
+            <%= link_to 'Show', author_path(author), class: 'btn btn-show' %>
+            <%= link_to 'Edit', edit_author_path(author), class: 'btn btn-edit' %>
+            <%= link_to 'Destroy', author_path(author), 
+                    data: {turbo_confirm: 'Are you sure?', turbo_method: :delete}, 
+                    class: 'btn btn-destroy' %>
+        </div>
+    <% end %>
+</div>
 

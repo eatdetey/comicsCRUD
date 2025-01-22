@@ -1,12 +1,22 @@
 <h1>Publishers</h1>
 
-<% @publishers.each do |publisher| %>
-    <h2><%= publisher.name%></h2>
+<%= link_to 'New Publisher', new_publisher_path, class: 'btn btn-new' %>
 
-    <br> 
-    <%= link_to 'Show', publisher_path(publisher) %>
-    <%= link_to 'Edit', edit_publisher_path(publisher) %>
-    <%= link_to 'Destroy', publisher_path(publisher), data: {turbo_confirm: 'Are you sure?', turbo_method: :delete} %>
+<div class="comics-grid">
+    <% @publishers.each do |publisher| %>
+        <div class="comic-card">
+            <h2><%= publisher.name%></h2>
 
-<% end %>
+            <br> 
+            <%= link_to 'Show', publisher_path(publisher), class: 'btn btn-show' %>
+            <%= link_to 'Edit', edit_publisher_path(publisher), class: 'btn btn-edit' %>
+            <%= link_to 'Destroy', publisher_path(publisher), 
+                    data: {turbo_confirm: 'Are you sure?', turbo_method: :delete},
+                    class: 'btn btn-destroy' %>
+        </div>
+    <% end %>
+</div>
+
+
+
 
