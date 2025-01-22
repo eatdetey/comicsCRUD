@@ -14,8 +14,8 @@ class AuthorsController < ApplicationController
 
   def create
     @author = Author.new(author_params)
-    if author.save
-      redirect_to author, notice: 'Author was successfully created.'
+    if @author.save
+      redirect_to @author, notice: "Author was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class AuthorsController < ApplicationController
 
   def update
     if @author.update(author_params)
-      redirect_to author, notice: 'Author was successfully updated.'
+      redirect_to author, notice: "Author was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class AuthorsController < ApplicationController
 
   def destroy
     @author.destroy
-    redirect_to authors_path, notice: 'Author was successfully deleted.'
+    redirect_to authors_path, notice: "Author was successfully deleted."
   end
 
   private
