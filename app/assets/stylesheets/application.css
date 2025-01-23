@@ -57,7 +57,7 @@
   }
 
 nav {
-  background-color: #333;
+  background-color: #a7dfff;
   padding: 15px 0;
   text-align: center;
 }
@@ -75,7 +75,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: white; 
+  color: rgb(0, 0, 0); 
   font-size: 18px;
   font-weight: bold;
   transition: color 0.3s ease-in-out;
@@ -85,3 +85,114 @@ nav ul li a:hover {
   color: #ffcc00;
 }
 
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+form label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+  color: #333;
+}
+
+form input[type="text"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+form div {
+  margin-top: 10px;
+}
+
+form input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+form input[type="submit"] {
+  background: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+form input[type="submit"]:hover {
+  background: #0056b3;
+}
+
+.authors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.author-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.author-item input[type="checkbox"] {
+  margin: 0;
+}
+
+.comic-details {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.comic-details h1 {
+  color: #333;
+  text-align: center;
+  font-size: 28px;
+  margin: 10px 10px 20px 10px;
+}
+
+.comic-details p {
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.comic-details p strong {
+  color: #000;
+}
+
+.comic-details .back-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.comic-details .back-link:hover {
+  background: #0056b3;
+}

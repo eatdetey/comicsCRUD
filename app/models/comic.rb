@@ -6,8 +6,4 @@ class Comic < ApplicationRecord
   validates :title, presence: true
   validates :genre, presence: true
   validates :published_on, presence: true
-
-  def formatted_created_at
-    created_at.strftime('%Y-%m-%d %H:%M:%S')
-  end
 end

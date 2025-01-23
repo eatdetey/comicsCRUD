@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_01_21_214253) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -18,8 +21,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_21_214253) do
   end
 
   create_table "comic_authors", force: :cascade do |t|
-    t.integer "comic_id", null: false
-    t.integer "author_id", null: false
+    t.bigint "comic_id", null: false
+    t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_comic_authors_on_author_id"
@@ -33,7 +36,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_21_214253) do
     t.text "description"
     t.string "genre"
     t.date "published_on"
-    t.integer "publisher_id", null: false
+    t.bigint "publisher_id", null: false
     t.index ["publisher_id"], name: "index_comics_on_publisher_id"
   end
 

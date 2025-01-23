@@ -2,25 +2,33 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
 
+  <br>
   <%= f.label :description %>
   <%= f.text_area :description %>
 
+  <br>
   <%= f.label :genre %>
   <%= f.text_field :genre %>
 
+  <br>
   <%= f.label :published_on %>
   <%= f.date_select :published_on %>
 
+  <br>
   <%= f.label :publisher_id, "Publisher" %>
   <%= f.collection_select :publisher_id, Publisher.all, :id, :name %>
 
+  <br>
   <%= f.label :author_ids, "Authors" %>
-  <div>
-    <% Author.all.each do |author| %>
+<div class="authors-list">
+  <% Author.all.each do |author| %>
+    <div class="author-item">
       <%= f.check_box :author_ids, { multiple: true }, author.id, nil %>
-      <%= f.label :author_ids, author.name %><br>
-    <% end %>
-  </div>
+      <%= author.name %>
+    </div>
+  <% end %>
+</div>
+
 
   <%= f.submit "Save" %>
 <% end %>

@@ -1,5 +1,17 @@
 <h1>Publishers</h1>
 
+<% if flash[:alert] %>
+  <script>
+    alert("<%= flash[:alert] %>");
+  </script>
+<% end %>
+
+<% if flash[:notice] %>
+  <script>
+    alert("<%= flash[:notice] %>");
+  </script>
+<% end %>
+
 <%= link_to 'New Publisher', new_publisher_path, class: 'btn btn-new' %>
 
 <div class="comics-grid">

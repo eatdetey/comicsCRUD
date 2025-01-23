@@ -1,9 +1,3 @@
-<%= form_with model: @publisher do |f| %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <%= f.submit "Save" %>
-<% end %>
+<h1>Edit Publisher's Info</h1>
 
-<%= link_to 'Back', publishers_path %>
+<%= render 'form' %>

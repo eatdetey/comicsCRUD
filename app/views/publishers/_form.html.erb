@@ -1,0 +1,8 @@
+<%= form_with model: @publisher do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <%= f.submit "Save" %>
+<% end %>
+

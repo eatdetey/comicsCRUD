@@ -1,5 +1,7 @@
-<h1><%= @author.name %></h1>
+<div class="comic-details">
+    <h1><%= @author.name %></h1>
 
-<p><%= link_to 'Back to Authors', authors_path %></p>
-<p><%= link_to 'Edit', edit_author_path(@author) %></p>
-<p><%= link_to 'Delete', author_path, method: :delete, data: { confirm: "Are you sure?" } %></p>
+    <p><%= link_to 'Back to Authors', authors_path %></p>
+    <p><%= link_to 'Edit', edit_author_path(@author) %></p>
+    <p><%= link_to 'Delete', author_path, method: :delete, data: { confirm: "Are you sure?" } %></p>
+</div>

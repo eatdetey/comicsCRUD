@@ -2,10 +2,14 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: %i[show edit update destroy]
 
   def index
-    @authors = Author.all
+    handle_db_error do
+      @authors = Author.all
+    end
   end
 
   def show
+    handle_db_error do
+    end
   end
 
   def new
@@ -14,27 +18,40 @@ class AuthorsController < ApplicationController
 
   def create
     @author = Author.new(author_params)
-    if @author.save
-      redirect_to @author, notice: "Author was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    handle_db_error do
+      if @author.save
+        redirect_to @author
+      else
+        render :new
+      end
     end
   end
 
   def edit
+    handle_db_error do
+    end
   end
 
   def update
-    if @author.update(author_params)
-      redirect_to author, notice: "Author was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
+    handle_db_error do
+      if @author.update(author_params)
+        redirect_to @author
+      else
+        render :edit
+      end
     end
   end
 
   def destroy
-    @author.destroy
-    redirect_to authors_path, notice: "Author was successfully deleted."
+    handle_db_error do
+      if @author.comics.any?
+        flash[:alert] = "Cannot delete author because they are associated with existing comics."
+        redirect_to authors_path
+      else
+        @author.destroy
+        redirect_to authors_path
+      end
+    end
   end
 
   private
@@ -45,5 +62,19 @@ class AuthorsController < ApplicationController
 
   def author_params
     params.require(:author).permit(:name)
+  end
+
+  def handle_db_error
+    begin
+      yield
+    rescue ActiveRecord::ConnectionNotEstablished => e
+      Rails.logger.error("Ошибка соединения с базой данных: #{e.message}")
+      flash[:error] = "Не удалось выполнить операцию с базой данных. Пожалуйста, попробуйте позже."
+      redirect_to root_path
+    rescue ActiveRecord::StatementInvalid => e
+      Rails.logger.error("Ошибка выполнения SQL-запроса: #{e.message}")
+      flash[:error] = "Произошла ошибка при выполнении запроса. Пожалуйста, попробуйте позже."
+      redirect_to root_path
+    end
   end
 end
