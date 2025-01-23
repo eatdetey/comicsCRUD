@@ -1,7 +1,14 @@
 <div class="comic-details">
     <h1><%= @author.name %></h1>
 
-    <p><%= link_to 'Back to Authors', authors_path %></p>
-    <p><%= link_to 'Edit', edit_author_path(@author) %></p>
-    <p><%= link_to 'Delete', author_path, method: :delete, data: { confirm: "Are you sure?" } %></p>
+    <% if @author.comics.any? %>
+    <p><strong>Comics:</strong></p>
+      <% @author.comics.each do |comic|%>
+        <p><%= link_to comic.title, comic_path(comic) %><p>
+      <% end %>
+    <% end %>
+
+    <%= link_to 'Back to Authors', authors_path, class: 'back-link' %>
+    <%= link_to 'Edit', edit_author_path(@author), class: 'btn btn-edit' %>
+    <%= link_to 'Delete', author_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-destroy' %>
 </div>

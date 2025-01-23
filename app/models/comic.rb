@@ -3,7 +3,7 @@ class Comic < ApplicationRecord
   has_many :comic_authors
   has_many :authors, through: :comic_authors
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
   validates :genre, presence: true
   validates :published_on, presence: true
 end

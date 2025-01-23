@@ -12,7 +12,7 @@
 
   <br>
   <%= f.label :published_on %>
-  <%= f.date_select :published_on %>
+  <%= f.date_select :published_on, :start_year => 1940, :end_year => Date.today.year %>
 
   <br>
   <%= f.label :publisher_id, "Publisher" %>
